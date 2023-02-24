@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\DataSelebController;
+use App\Http\Controllers\PreprocessingController;
+use App\Http\Controllers\TestingDataController;
+use App\Http\Controllers\TfIdfController;
+use App\Http\Controllers\TrainingDataController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,21 +38,15 @@ Route::get('profile', function () {
     return view('profile');
 });
 
-Route::get('preprocessing', function () {
-    return view('preprocessing');
-});
+Route::get('/preprocessing', [PreprocessingController::class, 'index']);
+Route::get('/testing', [TestingDataController::class, 'index']);
+Route::get('/training', [TrainingDataController::class, 'index']);
+Route::get('/tf_idf', [TfIdfController::class, 'index']);
+Route::resource('/seleb', DataSelebController::class);
 
-Route::get('training', function () {
-    return view('training');
-});
-
-Route::get('testing', function () {
-    return view('testing');
-});
-
-Route::get('data_seleb', function () {
-    return view('dataInput');
-});
+// Route::get('data_seleb', function () {
+//     return view('dataInput');
+// });
 
 Route::get('newdata', function () {
     return view('newData');

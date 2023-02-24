@@ -28,35 +28,52 @@
                     <div class="card ">
                         <div class="card-header pb-0 p-3">
                             <div class="d-flex justify-content-between">
-                                <h6 class="mb-2">Data Testing</h6>
+                                <h6 class="mb-2">Data Training</h6>
                             </div>
                         </div>
                         <div class="table-responsive m-4">
                             <table class="table table-striped table-bordered rounded" id="dataTable">
                                 <thead class="text-xxs text-secondary text-uppercase font-weight-bolder opacity-7">
                                     <tr>
-                                        <th>
+                                        <th width="200px">
                                             Text
                                         </th>
-                                        <th>
+                                        <th scope="col">
                                             Sentiments
+                                        </th>
+                                        <th scope="col">
+                                            document_list
+                                        </th>
+                                        <th scope="col">
+                                            tf
+                                        </th>
+                                        <th scope="col">
+                                            df
+                                        </th>
+                                        <th scope="col">
+                                            idf
+                                        </th>
+                                        <th scope="col">
+                                            tf-idf
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <p>
-                                                Nunc aliquet, purus sit amet porttitor scelerisque, est metus sodales
-                                                nisi, ut aliquet justo ipsum sed ligula.
-                                            </p>
-                                        </td>
-                                        <td>
-                                            <p>
-                                                test
-                                            </p>
-                                        </td>
-                                    </tr>
+                                    @foreach ($tf_idf as $data)
+                                        <tr>
+                                            <td>
+                                                <p>{{ $data->text }}</p>
+                                            </td>
+                                            <td>{{ $data->sentiment }}</td>
+                                            <td class="p-3">
+                                                <p>{{ $data->document_list }}</p>
+                                            </td>
+                                            <td>{{ $data->tf }}</td>
+                                            <td>{{ $data->df }}</td>
+                                            <td>{{ $data->idf }}</td>
+                                            <td>{{ $data->tfidf }}</td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

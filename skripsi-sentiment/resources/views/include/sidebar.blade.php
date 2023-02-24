@@ -31,7 +31,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="../pages/billing.html">
+                <a class="nav-link " href="{{ url('tf_idf') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
@@ -40,12 +40,12 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="{{ url('data_seleb') }}">
+                <a class="nav-link " href="{{ url('seleb') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-app text-info text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Input Data</span>
+                    <span class="nav-link-text ms-1">Selebgram List</span>
                 </a>
             </li>
             <li class="nav-item">

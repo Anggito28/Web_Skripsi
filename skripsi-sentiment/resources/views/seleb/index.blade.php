@@ -55,7 +55,46 @@
         </div>
         <div class="container-fluid py-4">
             <div class="row mt-4">
-                <div class="col-md-3">
+                @foreach ($seleb as $data)
+                    <div class="col-md-3">
+                        <a href="">
+                            <div class="card text-center shadow m-3 py-2">
+                                <a href="{{ Route('seleb.show', $data->id) }}" class="mt-2">
+                                    <img class="avatar avatar-xl shadow rounded-circle"
+                                        src="{{ asset('assets/img') }}/{{ $data->photo }}">
+                                </a>
+
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ $data->nama_seleb }}</h4>
+                                    <h6 class="category"><span
+                                            class="badge bg-gradient-info">{{ $data->kategori }}</span>
+                                    </h6>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="d-flex justify-content-center">
+                                                <div class="d-grid text-center">
+                                                    <span class="text-lg font-weight-bolder">{{ $data->post }}</span>
+                                                    <span class="text-sm opacity-8">Post</span>
+                                                </div>
+                                                <div class="d-grid text-center mx-4">
+                                                    <span
+                                                        class="text-lg font-weight-bolder">{{ $data->follower }}</span>
+                                                    <span class="text-sm opacity-8">Follower</span>
+                                                </div>
+                                                <div class="d-grid text-center">
+                                                    <span
+                                                        class="text-lg font-weight-bolder">{{ $data->following }}</span>
+                                                    <span class="text-sm opacity-8">Following</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+                {{-- <div class="col-md-3">
                     <a href="">
                         <div class="card text-center shadow m-3 py-2">
                             <a href="javascript:;" class="mt-2">
@@ -156,41 +195,7 @@
                             </div>
                         </div>
                     </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="">
-                        <div class="card text-center shadow m-3 py-2">
-                            <a href="javascript:;" class="mt-2">
-                                <img class="avatar avatar-xl shadow rounded-circle"
-                                    src="{{ asset('assets/img/team-1.jpg') }}">
-                            </a>
-
-                            <div class="card-body">
-                                <h4 class="card-title">Andrew John</h4>
-                                <h6 class="category"><span class="badge bg-gradient-info">Selebgram</span>
-                                </h6>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="d-flex justify-content-center">
-                                            <div class="d-grid text-center">
-                                                <span class="text-lg font-weight-bolder">22</span>
-                                                <span class="text-sm opacity-8">Post</span>
-                                            </div>
-                                            <div class="d-grid text-center mx-4">
-                                                <span class="text-lg font-weight-bolder">10</span>
-                                                <span class="text-sm opacity-8">Follower</span>
-                                            </div>
-                                            <div class="d-grid text-center">
-                                                <span class="text-lg font-weight-bolder">89</span>
-                                                <span class="text-sm opacity-8">Following</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                </div> --}}
 
             </div>
             <div class="mt-4">

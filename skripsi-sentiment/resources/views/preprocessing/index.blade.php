@@ -42,53 +42,88 @@
                                             Cleaning
                                         </th>
                                         <th>
-                                            Stopword
+                                            casefolding
                                         </th>
                                         <th>
                                             Tokenizing
                                         </th>
                                         <th>
-                                            Steaming
+                                            normalisasi
                                         </th>
                                         <th>
-                                            Cleaned
+                                            stopword
+                                        </th>
+                                        <th>
+                                            stemming
+                                        </th>
+                                        <th>
+                                            cleaned
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <p>
-                                                test
-                                            </p>
-                                        </td>
-                                        <td>
-                                            <p>
-                                                test
-                                            </p>
-                                        </td>
-                                        <td>
-                                            <p>
-                                                test
-                                            </p>
-                                        </td>
-                                        <td>
-                                            <p>
-                                                test
-                                            </p>
-                                        </td>
-                                        <td>
-                                            <p>
-                                                test
-                                            </p>
-                                        </td>
-                                        <td>
-                                            <p>
-                                                test
-                                            </p>
-                                        </td>
-                                    </tr>
+                                    @foreach ($preprocessing as $data)
+                                        {{-- {{ dd($data) }} --}}
+                                        <tr>
+                                            <td>
+
+                                                {{ $data->text }}
+
+                                            </td>
+                                            <td>
+
+                                                {{ $data->cleaning }}
+
+                                            </td>
+                                            <td>
+                                                {{ $data->casefolding }}
+                                            </td>
+                                            <td>
+                                                {{ $data->tokenizing }}
+                                            </td>
+                                            <td>
+                                                {{ $data->normalisasi }}
+                                            </td>
+                                            <td>
+                                                {{ $data->stopword }}
+                                            </td>
+                                            <td>
+                                                {{ $data->steeming }}
+                                            </td>
+                                            <td>
+                                                {{ $data->cleaned }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>
+                                            Normal
+                                        </th>
+                                        <th>
+                                            Cleaning
+                                        </th>
+                                        <th>
+                                            casefolding
+                                        </th>
+                                        <th>
+                                            Tokenizing
+                                        </th>
+                                        <th>
+                                            normalisasi
+                                        </th>
+                                        <th>
+                                            stopword
+                                        </th>
+                                        <th>
+                                            stemming
+                                        </th>
+                                        <th>
+                                            cleaned
+                                        </th>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>

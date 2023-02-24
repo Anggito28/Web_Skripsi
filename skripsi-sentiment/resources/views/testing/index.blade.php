@@ -28,35 +28,47 @@
                     <div class="card ">
                         <div class="card-header pb-0 p-3">
                             <div class="d-flex justify-content-between">
-                                <h6 class="mb-2">Data Training</h6>
+                                <h6 class="mb-2">Data Testing</h6>
                             </div>
                         </div>
                         <div class="table-responsive m-4">
                             <table class="table table-striped table-bordered rounded" id="dataTable">
                                 <thead class="text-xxs text-secondary text-uppercase font-weight-bolder opacity-7">
                                     <tr>
-                                        <th width="200px">
+                                        <th>
                                             Text
                                         </th>
-                                        <th scope="col">
+                                        <th>
                                             Sentiments
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($training as $data)
+                                    @foreach ($testing as $data)
                                         <tr>
                                             <td>
-                                                <p>{{ $data->text }}</p>
-                                            </td>
-                                            <td class="p-3">
                                                 <p>
-                                                <p>{{ $data->sentiment }}</p>
+                                                    {{ $data->text }}
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p>
+                                                    {{ $data->sentiments }}
                                                 </p>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>
+                                            Text
+                                        </th>
+                                        <th>
+                                            Sentiments
+                                        </th>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>

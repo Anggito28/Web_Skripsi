@@ -12,6 +12,7 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -106,7 +107,7 @@
                             <div class="col-4 col-lg-4 order-lg-2">
                                 <div class="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
                                     <a href="javascript:;">
-                                        <img src="../assets/img/team-2.jpg"
+                                        <img src="{{ asset('assets/img') }}/{{ $seleb->photo }}"
                                             class="rounded-circle img-fluid border border-2 border-white">
                                     </a>
                                 </div>
@@ -114,8 +115,9 @@
                         </div>
                         <div class="card-header text-center border-0 pt-0 pt-lg-2 pb-4 pb-lg-3">
                             <div class="d-flex justify-content-between">
-                                <a href="javascript:;" class="btn btn-sm btn-model mb-0 d-none d-lg-block"><i
-                                        class="fa fa-instagram mx-1" aria-hidden="true"></i>Instagram</a>
+                                <a href="https://www.instagram.com/{{ $seleb->username }}" target="_blank"
+                                    class="btn btn-sm btn-model mb-0 d-none d-lg-block"><i class="fa fa-instagram mx-1"
+                                        aria-hidden="true"></i>Instagram</a>
                                 <a href="javascript:;" class="btn btn-sm btn-info mb-0 d-block d-lg-none"><i
                                         class="ni ni-collection"></i></a>
                                 <a href="javascript:;"
@@ -129,15 +131,15 @@
                                 <div class="col">
                                     <div class="d-flex justify-content-center">
                                         <div class="d-grid text-center">
-                                            <span class="text-lg font-weight-bolder">22</span>
+                                            <span class="text-lg font-weight-bolder">{{ $seleb->post }}</span>
                                             <span class="text-sm opacity-8">Post</span>
                                         </div>
                                         <div class="d-grid text-center mx-4">
-                                            <span class="text-lg font-weight-bolder">10</span>
+                                            <span class="text-lg font-weight-bolder">{{ $seleb->follower }}</span>
                                             <span class="text-sm opacity-8">Follower</span>
                                         </div>
                                         <div class="d-grid text-center">
-                                            <span class="text-lg font-weight-bolder">89</span>
+                                            <span class="text-lg font-weight-bolder">{{ $seleb->following }}</span>
                                             <span class="text-sm opacity-8">Following</span>
                                         </div>
                                     </div>
@@ -145,16 +147,10 @@
                             </div>
                             <div class="text-center mt-4">
                                 <h5>
-                                    Rudi Simanjuntak<span class="font-weight-light">, 35</span>
+                                    {{ $seleb->nama_seleb }}
                                 </h5>
                                 <div class="h6 font-weight-300">
-                                    <i class="ni location_pin mr-2"></i>Buleleng, Indonesia
-                                </div>
-                                <div class="h6 mt-4">
-                                    <i class="ni business_briefcase-24 mr-2"></i>Student
-                                </div>
-                                <div>
-                                    <i class="ni education_hat mr-2"></i>University of Indonesia
+                                    <i class="ni location_pin mr-2"></i>Indonesia
                                 </div>
                             </div>
                         </div>
@@ -247,6 +243,7 @@
             </div>
         </div>
     </div>
+    {{-- <?php echo $data; ?> --}}
     <!--   Core JS Files   -->
     @include('include.script')
     <script>
@@ -264,13 +261,16 @@
     <script src="../assets/js/argon-dashboard.min.js?v=2.0.4"></script>
     <script>
         $(document).ready(function() {
+            var a = <?= $seleb->positif ?>;
+            var b = <?= $seleb->negatif ?>;
+            var c = <?= $seleb->neutral ?>;
             var ctx = $("#chart-line");
             var myLineChart = new Chart(ctx, {
                 type: 'pie',
                 data: {
-                    labels: ["Negatif", "Positif", "Negatif"],
+                    labels: ["Negatif", "Positif", "Neutral"],
                     datasets: [{
-                        data: [1200, 1700, 200],
+                        data: [b, a, c],
                         backgroundColor: ["rgba(255, 0, 0, 0.5)", "rgba(100, 255, 0, 0.5)",
                             "rgba(0, 100, 255, 0.5)"
                         ]
@@ -279,11 +279,12 @@
                 options: {
                     title: {
                         display: true,
-                        text: 'Weather'
+                        text: 'Sentiment'
                     }
                 }
             });
         });
+        console.log(a);
     </script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js'></script>
 </body>
