@@ -50,7 +50,7 @@
                                     <div class="numbers">
                                         <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Data Training</p>
                                         <h5 class="font-weight-bolder">
-                                            2800 Data
+                                            {{ $training ?? 0 }} Data
                                         </h5>
                                         <p class="mb-0">
                                             <span class="text-success text-sm font-weight-bolder">+55</span>
@@ -76,7 +76,7 @@
                                     <div class="numbers">
                                         <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Data Testing</p>
                                         <h5 class="font-weight-bolder">
-                                            400
+                                            {{ $testing ?? 0 }} Data
                                         </h5>
                                         <p class="mb-0">
                                             <span class="text-success text-sm font-weight-bolder">+3</span>
@@ -102,7 +102,7 @@
                                     <div class="numbers">
                                         <p class="text-sm mb-0 text-uppercase font-weight-bold">Data Income</p>
                                         <h5 class="font-weight-bolder">
-                                            +3,462
+                                            +- {{ $all ?? 0 }} Data
                                         </h5>
                                         <p class="mb-0">
                                             <span class="text-success text-sm font-weight-bolder">+2</span>
@@ -128,7 +128,7 @@
                                     <div class="numbers">
                                         <p class="text-sm mb-0 text-uppercase font-weight-bold">Total User Data</p>
                                         <h5 class="font-weight-bolder">
-                                            4
+                                            {{ $user ?? 0 }} Data
                                         </h5>
                                         <p class="mb-0">
                                             <span class="text-success text-sm font-weight-bolder">+5</span> Last Update
@@ -148,24 +148,6 @@
             </div>
             <div class="row mt-4">
                 <div class="col-lg-12 mb-lg-0 mb-4">
-                    <div class="card z-index-2 h-100">
-                        <div class="card-header pb-0 pt-3 bg-transparent">
-                            <h6 class="text-capitalize">Data Process</h6>
-                            <p class="text-sm mb-0">
-                                <i class="fa fa-arrow-up text-success"></i>
-                                <span class="font-weight-bold">4% more</span> in 2021
-                            </p>
-                        </div>
-                        <div class="card-body p-3">
-                            <div class="chart">
-                                <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-lg-7 mb-lg-0 mb-4">
                     <div class="card ">
                         <div class="card-header pb-0 p-3">
                             <div class="d-flex justify-content-between">
@@ -174,7 +156,8 @@
                         </div>
                         <div class="table-responsive p-4">
                             <table class="table align-items-center" id="dataTable">
-                                <thead class="text-sm font-weight-bolder text-opacity justify-content-center">
+                                <thead
+                                    class="text-sm font-weight-bolder text-opacity justify-content-center text-center">
                                     <tr>
                                         <th>user</th>
                                         <th>categori</th>
@@ -182,79 +165,35 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div>
-                                                    <img src="https://demos.creative-tim.com/soft-ui-design-system-pro/assets/img/team-2.jpg"
-                                                        class="avatar avatar-sm me-3">
+                                    @foreach ($seleb as $data)
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div>
+                                                        <img src="{{ asset('assets/img') }}/{{ $data->photo }}"
+                                                            class="avatar avatar-sm me-3">
+                                                    </div>
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-xs">{{ $data->nama_seleb }}</h6>
+                                                        <p class="text-xs text-secondary mb-0">{{ $data->username }}</p>
+                                                    </div>
                                                 </div>
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-xs">John Michael</h6>
-                                                    <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0">Student</p>
-                                            <p class="text-xs text-secondary mb-0">Selebgram</p>
-                                        </td>
-                                        <td class="align-middle">
-                                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
-                                                data-toggle="tooltip" data-original-title="Edit user">
-                                                View
-                                            </a>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                            <td>
+                                                <p class="text-xs font-weight-bold mb-0">{{ $data->kategori }}</p>
+                                                <p class="text-xs text-secondary mb-0">Active</p>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <a href="{{ Route('seleb.show', $data->id) }}"
+                                                    class="text-secondary font-weight-bold text-xs"
+                                                    data-toggle="tooltip" data-original-title="Edit user">
+                                                    View
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="card">
-                        <div class="card-header pb-0 p-3">
-                            <h6 class="mb-0">Categories</h6>
-                        </div>
-                        <div class="card-body p-3">
-                            <ul class="list-group">
-                                <li
-                                    class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                    <div class="d-flex align-items-center">
-                                        <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                                            <i class="ni ni-mobile-button text-white opacity-10"></i>
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark text-sm">Actress</h6>
-                                            <span class="text-xs">5 user, <span
-                                                    class="font-weight-bold">Active</span></span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex">
-                                        <button
-                                            class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
-                                                class="ni ni-bold-right" aria-hidden="true"></i></button>
-                                    </div>
-                                </li>
-                                <li
-                                    class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                    <div class="d-flex align-items-center">
-                                        <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                                            <i class="ni ni-tag text-white opacity-10"></i>
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark text-sm">Selebgram</h6>
-                                            <span class="text-xs">12, <span
-                                                    class="font-weight-bold">Active</span></span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex">
-                                        <button
-                                            class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
-                                                class="ni ni-bold-right" aria-hidden="true"></i></button>
-                                    </div>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>

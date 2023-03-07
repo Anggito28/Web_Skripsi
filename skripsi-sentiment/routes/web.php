@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataSelebController;
 use App\Http\Controllers\PreprocessingController;
 use App\Http\Controllers\TestingDataController;
@@ -18,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('main');
-});
+// Route::get('/', function () {
+//     return view('main');
+// });
 
 // Route::get('home', function () {
 //     return view('main');
@@ -38,6 +39,11 @@ Route::get('profile', function () {
     return view('profile');
 });
 
+Route::get('klasifikasi', function () {
+    return view('klasifikasi');
+});
+
+Route::get('/', [DashboardController::class, 'index']);
 Route::get('/preprocessing', [PreprocessingController::class, 'index']);
 Route::get('/testing', [TestingDataController::class, 'index']);
 Route::get('/training', [TrainingDataController::class, 'index']);
