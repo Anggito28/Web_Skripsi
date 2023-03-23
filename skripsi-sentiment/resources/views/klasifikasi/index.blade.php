@@ -24,40 +24,53 @@
         @include('include.navbar')
         <div class="container-fluid py-4">
             <div class="row mt-4">
-                <div class="col-lg-4 mb-lg-0 mb-4">
-                    <div class="card ">
-                        <div class="card-header pb-0 p-3">
-                            <div class="d-flex justify-content-between">
-                                <h6 class="mb-2 text-center">Klasifikasi SVM (Polynier)</h6>
+                @foreach ($klasifikasi as $data)
+                    <div class="col-lg-4 mb-lg-0 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header pb-0 p-3">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="mb-2 text-center">Klasifikasi SVM ({{ $data->type }})</h6>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="{{ asset('assets/img') }}/{{ $data->grafik }}" class="w-100 p-2" alt="">
+                            </div>
+                            <div class="table-responsive border-2 m-4 w-90">
+                                <table class="w-100">
+                                    <tbody>
+                                        <tr>
+                                            <td>Type</td>
+                                            <td>:</td>
+                                            <td>{{ $data->type }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Accuracy</td>
+                                            <td>:</td>
+                                            <td>{{ $data->accuracy }} </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Precision</td>
+                                            <td>:</td>
+                                            <td>{{ $data->precision }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Recall</td>
+                                            <td>:</td>
+                                            <td>{{ $data->recall }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>F1 Score</td>
+                                            <td>:</td>
+                                            <td>{{ $data->f1_score }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                {{-- <a href="" class="btn btn-primary mt-2">Check Detail</a></td> --}}
                             </div>
                         </div>
-                        <div class="table-responsive border-2 m-4 w-60">
-                            <table class="w-100">
-                                <tbody>
-                                    <tr>
-                                        <td>SVC</td>
-                                        <td>:</td>
-                                        <td>6,43</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Type</td>
-                                        <td>:</td>
-                                        <td>rbf</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Accuracy</td>
-                                        <td>:</td>
-                                        <td>74,33</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="" class="btn btn-primary mt-2">Check Detail</a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
                     </div>
-                </div>
-                <div class="col-lg-4 mb-lg-0 mb-4">
+                @endforeach
+                {{-- <div class="col-lg-4 mb-lg-0 mb-4">
                     <div class="card ">
                         <div class="card-header pb-0 p-3">
                             <div class="d-flex justify-content-between">
@@ -122,7 +135,7 @@
                             </table>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             @include('include.footer')

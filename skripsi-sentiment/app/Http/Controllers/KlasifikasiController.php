@@ -15,7 +15,9 @@ class KlasifikasiController extends Controller
      */
     public function index()
     {
-        //
+        $klasifikasi = klasifikasi::all();
+
+        return view('klasifikasi.index', compact(['klasifikasi']));
     }
 
     /**
@@ -45,9 +47,12 @@ class KlasifikasiController extends Controller
      * @param  \App\Models\klasifikasi  $klasifikasi
      * @return \Illuminate\Http\Response
      */
-    public function show(klasifikasi $klasifikasi)
+    public function show($id)
     {
-        //
+        $readonly = true;
+        $klasifikasi = klasifikasi::find($id);
+
+        return view('klasifikasi.show',compact(['readonly,klasifikasi']));
     }
 
     /**

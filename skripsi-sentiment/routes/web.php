@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataSelebController;
+use App\Http\Controllers\KlasifikasiController;
 use App\Http\Controllers\PreprocessingController;
 use App\Http\Controllers\TestingDataController;
 use App\Http\Controllers\TfIdfController;
@@ -49,6 +50,7 @@ Route::get('/testing', [TestingDataController::class, 'index']);
 Route::get('/training', [TrainingDataController::class, 'index']);
 Route::get('/tf_idf', [TfIdfController::class, 'index']);
 Route::resource('/seleb', DataSelebController::class);
+Route::resource('/klasifikasi', KlasifikasiController::class);
 
 // Route::get('data_seleb', function () {
 //     return view('dataInput');
